@@ -6,33 +6,22 @@ function esImpar(lista) {
     return lista.length % 2;
 }
 
-function calcularMediana(lista) {
+function calcularMediana(listaDesordenada) {
+    const lista = ordenarLista(listaDesordenada);
     const listaEsPar = esPar(lista);
 
     if (listaEsPar) {
       const indexMitad1Listapar = (lista.length / 2) - 1;
         const indexMitad2Listapar = lista.length / 2;
-       //1 const Mitad1ListaPar = lista[(lista.length / 2) - 1];
-        //1const Mitad2Listapar = lista[lista.length / 2];
-        
-
-        //lista[indexMitad1ListaPar]
-        //lista[indexMitads2ListaPar]
-        //[lista[indexMitad1ListaPar], lista[indexMitad2ListaPar]]
-        //1const listaMitades = [Mitad1ListaPar, Mitad2Listapar];
-
-    //si usmos el index # 2
     const listaMitades = [];
     listaMitades.push(lista[indexMitad1Listapar]);
     listaMitades.push(lista[indexMitad2Listapar]);
+
      const medianaListapar = calcularPromedio(listaMitades);
      return medianaListapar;
 
     } else {
-        //acar mediana
-       // const medianaImpar = Math.floor(lista.length / 2) + 1;
-
-       //encontar la mediana de una lista impar encontrar  el elemento de un array que este en toda la mitad de un elemento impar primero encontrar el indice y luego
+        
        const indexmitadListaImpar = Math.floor(lista.length / 2);
        const medianaListaImpar = lista[indexmitadListaImpar];
 
@@ -44,7 +33,7 @@ function calcularMediana(lista) {
         
     }
     
-    //calcularMediana([10,20,30]);1,20,20
+    calcularMediana([10,20,30]);//1,20,20
 
 
 }
@@ -104,3 +93,31 @@ function calcularMedianaImpar(numeros) {
   var listaNumeros = [500,100,900,450,700,600];
   var medianaResultado = calcularMedianaListaPar(listaNumeros);
   console.log("la mediana es : ' " + medianaResultado);//la mediana es 550
+
+  //como ordenar una lista desordenada
+
+  //lista = [1,2,3];
+
+  function ordenarLista(listaDesordenada) {
+      function ordenarListaSort(valorAcumulado,nuevoValor) {
+         // if (valorAcumulado > nuevoValor) {
+            //  return 1;voltea la lista pone numero mayor despes del menor
+          //} else if (valorAcumulado == nuevoValor) {
+             // return 0;aqui deja igual la lista no hace nada
+         // } else if (valorAcumulado < nuevoValor) {
+           //   return -1;en sort el valor negativo no voltea la lista la deja igual l valor
+         // }
+         return valorAcumulado - nuevoValor;//con esta sola linea resumis el condicionales else if
+        //  return nuevoValor - valoracumulado;
+        //return 5 - 10 -> -5;
+        //return 5 - 5 -> 0;
+        //return 10 - 5 -> 5;
+      }
+
+     // const lista = listaDesordenada.sort(ordenarListaSort);
+     const lista = listaDesordenada.sort((a,b) => a - b);
+      return lista;
+   
+  }
+
+  // const lista = listaDesordenada.sort(ordenarListaSort);
